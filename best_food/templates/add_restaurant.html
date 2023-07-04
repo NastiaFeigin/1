@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Restaurant</title>
+</head>
+<body>
+    <h1>Add Restaurant</h1>
+    <form action="/add_restaurant" method="POST" enctype="multipart/form-data">
+
+        <label for="name">Name:</label>
+        <input type="text" name="name" required><br>
+
+        <label for="poster">Poster:</label>
+        <input type="file" name="poster"><br>
+
+        <label for="info">Info:</label>
+        <input type="text" name="info" required><br>
+
+        <label for="address">Address:</label>
+        <input type="text" name="address" required><br>
+
+        <label for="price_level">Price Level:</label>
+        <input type="text" name="price_level" required><br>
+
+        <label for="kitchen_type">Kitchen Type:</label>
+        <input type="text" name="kitchen_type" required><br>
+
+        <label for="happy_hour">Happy Hour:</label>
+        <input type="text" name="happy_hour" required><br>
+
+        <label for="style">Style:</label>
+        <input type="text" name="style" required><br>
+
+        <label for="opening_hours">Opening Hours:</label>
+        <input type="text" name="opening_hours" required><br>
+
+        <label for="site">Site:</label>
+        <input type="text" name="site" required><br>
+
+        <label for="wolt_review">Wolt Review:</label>
+        <input type="text" name="wolt_review" required><br>
+
+        <input type="submit" value="Add">
+    </form>
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Page</title>
+        <style>
+
+
+        body {
+            background-color: black;
+            color: white;
+        }
+
+        .one {
+            font-size: 36px;
+            text-align: center;
+            margin-top: 50px;
+            font-family: font-family: Verdana, Helvetica, Arial, sans-serif;
+            color: white;
+            }
+
+
+
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .gallery a {
+            display: inline-block;
+            position: relative;
+            text-decoration: none;
+            margin: 100px;
+            cursor: pointer;
+        }
+
+        .gallery img {
+            width: 420px;
+            height: 600px;
+        }
+
+        .caption {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 5px 10px;
+            text-align: center;
+            width: 100%;
+            color: white;
+            font-family: Verdana, Helvetica, Arial, sans-serif
+        }
+    </style>
+</head>
+<body>
+    <div class="one">    <h1 > Ты то что ты ешь.</h1></div>
+    <a href="login"><button>LOGIN</button></a>
+    <a href="add_restaurant"><button>Add New Restaurant</button></a>
+
+    <div class="gallery">
+        {% for restaurant in restaurants %}
+            <a href="{{ url_for('rest', rest_id=restaurant.id) }}">
+                <img src="{{ url_for('static', filename=restaurant.poster) }}" alt="{{ restaurant.name }}" >
+                <div class="caption">{{ restaurant.name}} </div>
+            </a>
+        {% endfor %}
+    </div>
+</body>
+</html>

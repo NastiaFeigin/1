@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+
+    <style>
+
+    body {
+      background-image: url("static/food/pizza.jpg");
+      background-repeat: repeat;
+      background-size: 1200px 800px;
+
+    }
+
+    h1 {
+      font-size: 28px;
+      color: #262626;
+      margin-bottom: 30px;
+    }
+
+    .login-container {
+      max-width: 350px;
+      margin: 0 auto;
+      background-color: #fff;
+      border: 1px solid #dbdbdb;
+      padding: 40px;
+      border-radius: 4px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 50%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #dbdbdb;
+      border-radius: 4px;
+    }
+
+    button {
+      width: 50%;
+      padding: 10px;
+      background-color: #00a7b3;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #357ae8;
+    }
+
+    .footer {
+      margin-top: 40px;
+      color: #8e8e8e;
+      font-size: 14px;
+    }
+  </style>
+
+</head>
+<body>
+
+<div class="login">
+    <h1>Login</h1>
+        <form method="POST" action="/login">
+            <input type="text" name="username" required>
+            <input type="password" name="password" required>
+            <button type="submit">Login</button>
+        </form>
+</div>
+</body>
+</html>
