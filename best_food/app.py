@@ -42,7 +42,9 @@ def static_files(filename):
 @app.route('/')
 def index():
     restaurants = Restaurants.query.all()
-    return render_template('index.html')
+    for restaurant in restaurants:
+        print(restaurant.poster)
+    return render_template('index.html', restaurants=restaurants)
 
 
 @app.route('/login', methods=["POST", "GET"])
@@ -92,6 +94,7 @@ def add_rest():
             r = Restaurants(name=name, info=info, address=address,
                             price_level=price_level, kitchen_type=kitchen_type, happy_hour=happy_hour,
                             style=style, opening_hours=opening_hours, site=site, wolt_review=wolt_review)
+
 
         db.session.add(r)
         db.session.commit()
