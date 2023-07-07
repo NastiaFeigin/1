@@ -5,7 +5,6 @@ from flask_migrate import Migrate, migrate
 import os
 from werkzeug.utils import secure_filename
 
-
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///best.db'
 app.config['UPLOAD_FOLDER'] = 'static/food'
@@ -35,14 +34,18 @@ class Restaurants(db.Model):
     site = db.Column(db.String(300), nullable=False, unique=False)
     wolt_review = db.Column(db.String(30), nullable=False, unique=False)
 
+
 @app.route('/static/<path:filename>')
 def static_files(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
 
+
 @app.route('/')
 def index():
     restaurants = Restaurants.query.all()
-    return render_template('index.html')
+    for restaurant in restaurants:
+        print(restaurant.poster)
+    return render_template('index.html', restaurants=restaurants)
 
 
 @app.route('/login', methods=["POST", "GET"])
