@@ -96,6 +96,7 @@ def add_rest():
                             price_level=price_level, kitchen_type=kitchen_type, happy_hour=happy_hour,
                             style=style, opening_hours=opening_hours, site=site, wolt_review=wolt_review)
 
+
         db.session.add(r)
         db.session.commit()
 
