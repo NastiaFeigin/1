@@ -63,7 +63,7 @@
     <div class="gallery">
         {% for restaurant in restaurants %}
             <a href="{{ url_for('rest', rest_id=restaurant.id) }}">
-                <img src="{{ url_for('static', filename=restaurant.poster) }}" alt="{{ restaurant.name }}" >
+                <img src="{{ url_for('static_files', filename=restaurant.poster) }}" alt="{{ restaurant.name }}" >
                 <div class="caption">{{ restaurant.name}} </div>
             </a>
         {% endfor %}

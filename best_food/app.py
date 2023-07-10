@@ -5,6 +5,11 @@ from flask_migrate import Migrate, migrate
 import os
 from werkzeug.utils import secure_filename
 
+
+
+
+
+
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///best.db'
 app.config['UPLOAD_FOLDER'] = 'static/food'
@@ -73,6 +78,7 @@ def rest(rest_id):
 def add_rest():
     if request.method == "POST":
         name = request.form.get('name')
+        print("Received name:", name)
         info = request.form.get('info')
         address = request.form.get('address')
         price_level = request.form.get('price_level')
