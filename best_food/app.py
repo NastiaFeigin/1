@@ -6,10 +6,6 @@ import os
 from werkzeug.utils import secure_filename
 
 
-
-
-
-
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///best.db'
 app.config['UPLOAD_FOLDER'] = 'static/food'
@@ -40,6 +36,15 @@ class Restaurants(db.Model):
     wolt_review = db.Column(db.String(30), nullable=False, unique=False)
 
 
+
+class Review(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    restaurant_id = db.Column(db.Integer, db.ForeignKey('restaurants.id'), nullable=False)
+    content = db.Column(db.Text, nullable=False)
+
+
+
+
 @app.route('/static/<path:filename>')
 def static_files(filename):
     return send_from_directory(app.config['UPLOAD_FOLDER'], filename)
@@ -51,6 +56,9 @@ def index():
     for restaurant in restaurants:
         print(restaurant.poster)
     return render_template('index.html', restaurants=restaurants)
+
+
+
 
 
 @app.route('/login', methods=["POST", "GET"])
@@ -71,8 +79,28 @@ def login():
 @app.route('/rest_page/<rest_id>')
 def rest(rest_id):
     restaurant = Restaurants.query.get(rest_id)
-    return render_template('rest_page.html', restaurant=restaurant)
+    review = Review.query.filter_by(restaurant_id=rest_id).all()
+    return render_template('rest_page.html', restaurant=restaurant, review=review)
 
+
+@app.route('/add_review/<rest_id>', methods=['POST', 'GET'])
+def add_review(rest_id):
+    if request.method == 'POST':
+        content = request.form.get('content')
+        restaurant = Restaurants.query.get(rest_id)
+        review = Review(content=content, restaurant_id=rest_id)
+        db.session.add(review)
+        db.session.commit()
+        reviews = Review.query.filter_by(restaurant_id=rest_id).all()
+        for review in reviews:
+            print(review.content)
+        return redirect(url_for('rest', rest_id=rest_id))
+    else:
+        restaurant = Restaurants.query.get(rest_id)
+        reviews = Review.query.filter_by(restaurant_id=rest_id).all()
+        return render_template('rest_page.html', restaurant=restaurant, reviews=reviews)
+
+   # return redirect(url_for('rest', rest_id=rest_id))
 
 @app.route('/add_restaurant', methods=["POST", "GET"])
 def add_rest():

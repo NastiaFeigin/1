@@ -7,24 +7,53 @@
      body {
             background-color: black;
             color: white;
+            font-family: Arial, sans-serif;
+        }
+
+
+        .data {
+            flex: 1;
+            margin-right: 800px;
+            margin-top: 170px;
+        }
 
         .container {
+
             display: flex;
-            align-items: flex-start;
+            align-items: stretch;
+
         }
 
         .poster {
             flex: 1;
             margin-right: 20px;
+
         }
 
         .info {
-            flex: 2;
+            flex: 4;
         }
 
         .info h2 {
             margin-top: 0;
         }
+
+        .review {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid green;
+        }
+
+        .review p {
+            margin: 5px 0;
+            color: pink;
+        }
+
+        #review-container {
+            height: auto;
+            overflow-y: auto;
+        }
+
     </style>
 </head>
 <body>
@@ -35,33 +64,39 @@
             <img src="{{ url_for('static', filename=restaurant.poster) }}" alt="{{ restaurant.name }}">
         </div>
 
-        <dif class="data">
+        <div class="data">
 
             <h2>{{ restaurant.name }}</h2>
-            <p><strong>Address:</strong> {{ restaurant.address}}</p>
-            <p><strong>Price Level</strong> {{restaurant.price_level}}</p>
-            <p><strong>Kitchen Type</strong> {{ restaurant.kitchen_type}}</p>
-            <p><strong>Happy Hour:</strong> {{restaurant.happy_hour}}</p>
-            <p><strong>Style:</strong>{{ restaurant.style}}</p>
-            <p><strong>Opening Hours:</strong>{{ restaurant.opening_hours}}</p>
-            <p><strong>Site:</strong><a href="{{restaurant.site}}">{{restaurant.site}}</a></p>
-            <p><strong>Wolt Review:</strong> {{restaurant.wolt_review}}</p>
-        </dif>
+            <p>{{ restaurant.info }}</p>
+            <p><strong>Address: </strong> {{ restaurant.address}}</p>
+            <p><strong>Price Level: </strong> {{restaurant.price_level}}</p>
+            <p><strong>Kitchen Type: </strong> {{ restaurant.kitchen_type}}</p>
+            <p><strong>Happy Hour: </strong> {{restaurant.happy_hour}}</p>
+            <p><strong>Style: </strong>{{ restaurant.style}}</p>
+            <p><strong>Opening Hours: </strong>{{ restaurant.opening_hours}}</p>
+            <p><strong>Site: </strong><a href="{{restaurant.site}}">{{restaurant.site}}</a></p>
+            <p><strong>Wolt Review: </strong> {{restaurant.wolt_review}}</p>
+        </div>
 
 
     </div>
-    <p>{{ restaurant.info }}</p>
 
-        <form>
 
-            <input type="text" name="comment">
+
+
+        <form id="add-review-form" action="/add_review/{{ restaurant.id }}" method="POST" >
+
+            <input type="text" name="content">
             <button type="submit" >Save</button>
 
         </form>
 
 
+        <div class="review" id="review-container">
+            {% for review in reviews%}
+                {{ review.content }}
+            {% endfor %}
 
-
-
+        </div>
 </body>
 </html>
