@@ -91,13 +91,13 @@ def add_review(rest_id):
         review = Review(content=content, restaurant_id=rest_id)
         db.session.add(review)
         db.session.commit()
-        reviews = Review.query.filter_by(restaurant_id=rest_id).all()
+        reviews = Review.query.filter_by(restaurant_id=int(rest_id)).all()
         for review in reviews:
             print(review.content)
         return redirect(url_for('rest', rest_id=rest_id))
     else:
         restaurant = Restaurants.query.get(rest_id)
-        reviews = Review.query.filter_by(restaurant_id=rest_id).all()
+        reviews = Review.query.filter_by(restaurant_id=int(rest_id)).all()
         return render_template('rest_page.html', restaurant=restaurant, reviews=reviews)
 
    # return redirect(url_for('rest', rest_id=rest_id))

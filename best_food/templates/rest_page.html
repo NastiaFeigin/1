@@ -84,7 +84,8 @@
 
 
 
-        <form id="add-review-form" action="/add_review/{{ restaurant.id }}" method="POST" >
+        <form id="add-review-form" action="{{ url_for('add_review', rest_id=restaurant.id) }}" method="POST">
+
 
             <input type="text" name="content">
             <button type="submit" >Save</button>
@@ -93,7 +94,7 @@
 
 
         <div class="review" id="review-container">
-            {% for review in reviews%}
+            {% for review in reviews %}
                 {{ review.content }}
             {% endfor %}
 

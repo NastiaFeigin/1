@@ -3,8 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <title>Add Restaurant</title>
+    <style>
+        body {
+            background-color: #222;
+            color: #fff;
+            font-family: Arial, sans-serif;
+        }
+
+        .rest {
+            width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .rest h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .rest label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .rest input[type="text"],
+        .rest input[type="file"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #666;
+            border-radius: 4px;
+            background-color: #444;
+            color: #fff;
+        }
+
+        .rest input[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #1DA1F2;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        .rest input[type="submit"]:hover {
+            background-color: #0E71B8;
+        }
+    </style>
+
+
 </head>
 <body>
+<div class="rest">
     <h1>Add Restaurant</h1>
     <form action="/add_restaurant" method="POST" enctype="multipart/form-data">
 
@@ -42,6 +97,8 @@
         <input type="text" name="wolt_review" required><br>
 
         <input type="submit" value="Add">
+        </div>
+
     </form>
 </body>
 </html>

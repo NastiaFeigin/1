@@ -3,22 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <title>Main Page</title>
+
         <style>
 
 
         body {
             background-color: black;
             color: white;
+            font-family: Verdana, Helvetica, Arial, sans-serif;
         }
 
         .one {
-            font-size: 36px;
             text-align: center;
             margin-top: 50px;
-            font-family: font-family: Verdana, Helvetica, Arial, sans-serif;
+            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
             color: white;
-            }
+        }
 
+        .title {
+            font-size: 48px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            line-height: 1.5;
+            color: #F3EDED;
+        }
+
+
+
+
+        .login a,
+    .add a {
+  background-image: linear-gradient(to right, #F3EDED, #070707); /* Замените цвета на желаемые */
+  color: #ffffff; /* Замените #ffffff на желаемый цвет текста */
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+}
 
 
 
@@ -56,9 +79,12 @@
     </style>
 </head>
 <body>
-    <div class="one">    <h1 > Ты то что ты ешь.</h1></div>
-    <a href="login"><button>LOGIN</button></a>
-    <a href="add_restaurant"><button>Add New Restaurant</button></a>
+            <div class="one"><h1><span class="title">Ты то что ты ешь.</span></h1></div>
+
+            <div class="login"><a href="login">LOGIN</a></div>
+            <br>
+            <br>
+            <div class="add"><a href="add_restaurant">Add New Restaurant</a></div>
 
     <div class="gallery">
         {% for restaurant in restaurants %}
