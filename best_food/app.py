@@ -91,8 +91,8 @@ def add_review(rest_id):
         reviews = Review.query.filter_by(restaurant_id=int(rest_id)).all()
         return render_template('rest_page.html', restaurant=restaurant, reviews=reviews)
 
+    # return redirect(url_for('rest', rest_id=rest_id))
 
-# return redirect(url_for('rest', rest_id=rest_id))
 
 @app.route('/add_restaurant', methods=["POST", "GET"])
 def add_rest():
